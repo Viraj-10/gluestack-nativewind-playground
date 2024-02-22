@@ -1,17 +1,49 @@
 import "./global.css";
 import { StatusBar } from "expo-status-bar";
-import { Text, View } from "react-native";
-import { useColorScheme } from "react-native";
-import { ThemeProvider } from "@/components/ui/core/ThemeProvider";
+import { Text, TextInput, View, Pressable } from "react-native";
+
+import { GluestackUIProvider } from "@/components/ui/core/ThemeProvider";
+import { Button, ButtonText } from "@/components/ui/button";
+import {
+  Actionsheet,
+  ActionsheetContent,
+  ActionsheetBackdrop,
+  ActionsheetDragIndicator,
+} from "@/components/ui/actionsheet/gothom";
+import { cssInterop } from "nativewind";
+
+import { useState } from "react";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
+cssInterop(Pressable, { className: "style" });
 export default function App() {
+  const [isOpen, setIsOpen] = useState(false);
   return (
-    <ThemeProvider mode="light">
-      <View className="flex-1 bg-primary-500 items-center justify-center">
-        <Text className="text-typography-100">
-          Open up App.tsx to start working on your app!
-        </Text>
-        <StatusBar style="auto" />
+    <>
+      <View
+        className="flex-1 justify-center items-center mt-96"
+        style={{
+          marginTop: 96,
+        }}
+      >
+        <Pressable className="bg-red-500">
+          <Text>Hello</Text>
+        </Pressable>
       </View>
-    </ThemeProvider>
+      {/* <Actionsheet
+          isOpen={isOpen}
+          onClose={() => setIsOpen(false)}
+          onOpen={() => {
+            setIsOpen(true);
+          }}
+        >
+          <ActionsheetBackdrop />
+          <ActionsheetDragIndicator
+            style={{
+              backgroupColor: "red",
+            }}
+          />
+          <ActionsheetContent className="bg-slate-100"></ActionsheetContent>
+        </Actionsheet> */}
+    </>
   );
 }

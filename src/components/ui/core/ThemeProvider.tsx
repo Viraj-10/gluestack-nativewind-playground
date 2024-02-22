@@ -1,6 +1,8 @@
-import { themes } from "@/components/ui/core/theme";
 import React from "react";
 import { Platform, View } from "react-native";
+
+// Change the config file path
+import { config } from "./theme";
 
 const providerStyle = Platform.select({
   web: {
@@ -20,13 +22,24 @@ const providerStyle = Platform.select({
   },
 });
 
-export function ThemeProvider({
+export function GluestackUIProvider({
   mode,
   ...props
 }: {
-  mode: "light" | "dark";
+  mode?: "light" | "dark";
   children: any;
 }) {
   // @ts-ignore
-  return <View style={[themes[mode], providerStyle]}>{props.children}</View>;
+  return (
+    <View
+      style={[
+        mode ? config[mode] : config["light"],
+        providerStyle,
+        // @ts-ignore
+        props.style,
+      ]}
+    >
+      {props.children}
+    </View>
+  );
 }

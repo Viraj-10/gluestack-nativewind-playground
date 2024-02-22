@@ -1,9 +1,9 @@
-/** @type {import('tailwindcss').Config} */
+// tailwind.config.js
 module.exports = {
-  // NOTE: Update this to include the paths to all of your component files.
+  darkMode: "class",
   content: [
-    "./App.{js,jsx,ts,tsx}",
-    "./src/components/ui/**/*.{js,jsx,ts,tsx}",
+    "./src/**/*.{html,js,jsx,ts,tsx}",
+    "./src/components/**/**/*.{html,js,jsx,ts,tsx}",
   ],
   presets: [require("nativewind/preset")],
   theme: {
@@ -147,14 +147,25 @@ module.exports = {
           800: "var(--color-background-800)",
           900: "var(--color-background-900)",
           950: "var(--color-background-950)",
+          error: "var(--color-background-error)",
+          warning: "var(--color-background-warning)",
+          muted: "var(--color-background-muted)",
+          success: "var(--color-background-success)",
         },
-        backgroundError: "var(--color-background-error)",
-        backgroundWarning: "var(--color-background-warning)",
-        backgroundSuccess: "var(--color-background-success)",
-        backgroundMuted: "var(--color-background-muted)",
+      },
+      fontFamily: {
+        heading: undefined,
+        body: undefined,
+        mono: undefined,
+      },
+      fontWeight: {
+        hairline: "100",
+        extraBlack: "950",
+      },
+      fontSize: {
+        "2xs": "10px",
       },
     },
     plugins: [],
   },
-  plugins: [],
 };
